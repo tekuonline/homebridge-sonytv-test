@@ -3,7 +3,6 @@ var Service, Characteristic, VolumeCharacteristic, ChannelCharacteristic;
 var request = require("request");
 var inherits = require('util').inherits;
 var wol = require("wake_on_lan");
-var ping = require ("net-ping");
 
 
 module.exports = function(homebridge){
@@ -19,8 +18,8 @@ module.exports = function(homebridge){
 function SonyAccessory(log, config) {
 	this.log = log;
 	
-	this.mac 			= config.mac;
-	this.ip 			= config.["ip_address"]
+	this.mac 			= config.["mac"];
+	this.ip 			= config.["ip_address"];
 	this.api_url    	= config["api_url"];
 	this.http_method 	= "POST";
 	this.volUp_body   	= config["volUp_body"];
