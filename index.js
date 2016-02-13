@@ -1,3 +1,5 @@
+"use strict";
+
 var Service, Characteristic, VolumeCharacteristic, ChannelCharacteristic;
 var request = require("request");
 var inherits = require('util').inherits;
@@ -12,21 +14,20 @@ module.exports = function(homebridge){
   makeChannelCharacteristic();
   
   homebridge.registerAccessory("homebridge-sonytv-test", "Sony", SonyAccessory);
-};
+}
 
 function SonyAccessory(log, config) {
 	this.log = log;
-	
-	this.mac 			= config.["mac"];
-	this.ip 			= config.["ip_address"];
-	this.api_url    	= config["api_url"];
+	this.mac 			= config.mac;
+	this.ip 			= config..ip_address;
+	this.api_url    	= config.api_url;
 	this.http_method 	= "POST";
-	this.volUp_body   	= config["volUp_body"];
-	this.volDown_bod	= config["volDown_body"];
-	this.chanUp_body	= config["chanUp_body"];
-	this.chanDown_body 	= config["chanDown_body"];
-	this.sendimmediate	= config["sendimmediately"];
-	this.name 			= config["name"];
+	this.volUp_body   	= config.volUp_body;
+	this.volDown_bod	= config.volDown_body;
+	this.chanUp_body	= config.chanUp_body;
+	this.chanDown_body 	= config.chanDown_body;
+	this.sendimmediate	= config.sendimmediately;
+	this.name 			= config.name;
 
 	if (!this.mac) throw new Error("Please provde the mac address of tv in config file");
 
@@ -56,17 +57,17 @@ SonyAccessory.prototype.getInformationService = function() {
         .setCharacteristic(Characteristic.Model, '1.0.0')
         .setCharacteristic(Characteristic.SerialNumber, '10.2.02');
     return informationService;
-};
+}
 
 
 SonyAccessory.prototype.getServices = function() {
   return [this.service, this.getInformationService()];
-     };
+     }
 
 SonyAccessory.prototype._getOn = function(callback) {
     var accessory = this;
     //get ping or something in here!!
-};
+}
 
 SonyAccessory.prototype._setOn = function(on, callback) {
 		  if(on){
@@ -83,28 +84,28 @@ SonyAccessory.prototype._setOn = function(on, callback) {
 		    }.bind(this));
 		  }
 		  callback();
-};
+}
 
 SonyAccessory.prototype._getVolume = function(callback) {
     var accessory = this;
     callback(null, 25);
-};
+}
 
 SonyAccessory.prototype._setVolume = function(volume, callback) {
     var accessory = this;
     callback(null);
-};
+}
 
 
 SonyAccessory.prototype._getChannel = function(callback) {
     var accessory = this;
     callback(null, 2);
-};
+}
 
 SonyAccessory.prototype._setChannel = function(volume, callback) {
     var accessory = this;
     callback(null);
-};
+}
 
 	// Custom Characteristics
 
@@ -143,3 +144,5 @@ SonyAccessory.prototype._setChannel = function(volume, callback) {
   
   		inherits(ChannelCharacteristic, Characteristic);
 	}
+
+  
