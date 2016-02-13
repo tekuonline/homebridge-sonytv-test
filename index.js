@@ -14,12 +14,12 @@ module.exports = function(homebridge){
   makeChannelCharacteristic();
   
   homebridge.registerAccessory("homebridge-sonytv-test", "Sony", SonyAccessory);
-}
+};
 
 function SonyAccessory(log, config) {
 	this.log = log;
 	this.mac 			= config.mac;
-	this.ip 			= config..ip_address;
+	this.ip 			= config.ip_address;
 	this.api_url    	= config.api_url;
 	this.http_method 	= "POST";
 	this.volUp_body   	= config.volUp_body;
@@ -111,38 +111,37 @@ SonyAccessory.prototype._setChannel = function(volume, callback) {
 
 	function makeVolumeCharacteristic() {
 
-  		VolumeCharacteristic = function() {
-    		Characteristic.call(this, 'Volume', '19E1CF82-E0EE-410D-A23C-E80020354C13');
-    		this.setProps({
-		 format: Characteristic.Formats.INT,
-		 unit: Characteristic.Units.NONE,
-		 maxValue: 100,
-		 minValue: 0,
-		 minStep: 1,
-		 perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY]
-		});
-    		this.value = this.getDefaultValue();
-	};
-  
-  		inherits(VolumeCharacteristic, Characteristic);
-	}
-	
-	function makeChannelCharacteristic() {
+    VolumeCharacteristic = function() {
+        Characteristic.call(this, 'Volume', '91288267-5678-49B2-8D22-F57BE995AA00');
+        this.setProps({
+            format: Characteristic.Formats.INT,
+            unit: Characteristic.Units.PERCENTAGE,
+            maxValue: 100,
+            minValue: 0,
+            minStep: 1,
+            perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY]
+        });
+        this.value = this.getDefaultValue();
+    };
 
-  		ChannelCharacteristic = function() {
-    		Characteristic.call(this, 'Channel', '212131F4-2E14-4FF4-AE13-C97C3232499D');
-    		this.setProps({
-		 format: Characteristic.Formats.INT,
-		 unit: Characteristic.Units.NONE,
-		 maxValue: 100,
-		 minValue: 0,
-		 minStep: 1,
-		 perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY]
-		});
-    		this.value = this.getDefaultValue();
-	};
-  
-  		inherits(ChannelCharacteristic, Characteristic);
-	}
+    inherits(VolumeCharacteristic, Characteristic);
+}
 
+function makeChannelCharacteristic() {
+
+    ChannelCharacteristic = function () {
+        Characteristic.call(this, 'Channel', '212131F4-2E14-4FF4-AE13-C97C3232499D');
+        this.setProps({
+            format: Characteristic.Formats.INT,
+            unit: Characteristic.Units.NONE,
+            maxValue: 100,
+            minValue: 0,
+            minStep: 1,
+            perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY]
+        });
+        this.value = this.getDefaultValue();
+    };
+
+    inherits(ChannelCharacteristic, Characteristic);
+}
   
