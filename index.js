@@ -5,7 +5,6 @@ var request = require("request");
 var inherits = require('util').inherits;
 var wol = require("wake_on_lan");
 
-
 module.exports = function(homebridge){
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
