@@ -18,7 +18,7 @@
     "url": "https://github.com/tekuonline/homebridge-sonytv-test"
   },
   "dependencies": {
-    "request": "^2.65.0"
+    "request": "^2.65.0",
     "wol": "^1.0.2"
   }
 }
