@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "request": "^2.65.0",
-    "wol": "^1.0.2"
+    "wake_on_lan": "0.0.4"
   }
 }
