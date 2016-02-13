@@ -1,4 +1,3 @@
-"use strict";
 var Service, Characteristic, VolumeCharacteristic, ChannelCharacteristic;
 var request = require("request");
 var inherits = require('util').inherits;
@@ -66,14 +65,7 @@ SonyAccessory.prototype.getServices = function() {
 
 SonyAccessory.prototype._getOn = function(callback) {
     var accessory = this;
-    this.remote.isAlive(function(err) {  // change this to ping! stuff
-        if (err) {
-             callback(new Error('TV is off'));
-        } else {
-            accessory.log.debug('TV is ON!!!');
-            callback(null, true);
-        }
-    });
+    //get ping or something in here!!
 };
 
 SonyAccessory.prototype._setOn = function(on, callback) {
