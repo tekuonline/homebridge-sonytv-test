@@ -12,7 +12,7 @@ module.exports = function(homebridge){
   makeVolumeCharacteristic();
   makeChannelCharacteristic();
   
-  homebridge.registerAccessory("homebridge-sonytv-test", "Sony", SonyAccessory);
+  homebridge.registerAccessory("homebridge-sonytv-test", "Sony_TV", SonyAccessory);
 };
 
 function SonyAccessory(log, config) {
