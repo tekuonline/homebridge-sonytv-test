@@ -34,8 +34,8 @@ function SonyAccessory(log, config) {
 
      this.service
         .getCharacteristic(Characteristic.On)
-        .on('get', this._getOn.bind(this))
-        .on('set', this._setOn.bind(this));
+        .on('get', this.getOn.bind(this))
+        .on('set', this.setOn.bind(this));
 
     this.service
         .addCharacteristic(VolumeCharacteristic)
@@ -63,12 +63,12 @@ SonyAccessory.prototype.getServices = function() {
   return [this.service, this.getInformationService()];
      }
 
-SonyAccessory.prototype._getOn = function(callback) {
+SonyAccessory.prototype.getOn = function(callback) {
     var accessory = this;
     //get ping or something in here!!
 }
 
-SonyAccessory.prototype._setOn = function(on, callback) {
+SonyAccessory.prototype.setOn = function(on, callback) {
 		  if(on){
 		    wol.wake(this.mac, function(error) {
 		      if (error) {
