@@ -30,12 +30,12 @@ function SonyAccessory(log, config) {
 
 	if (!this.mac) throw new Error("Please provde the mac address of tv in config file");
 
-	this._service = new Service.Switch(this.name);
+	this.service = new Service.Switch(this.name);
 
      this.service
         .getCharacteristic(Characteristic.On)
-        .on('get', this.getOn.bind(this))
-        .on('set', this.setOn.bind(this));
+        .on('get', this._getOn.bind(this))
+        .on('set', this._setOn.bind(this));
 
     this.service
         .addCharacteristic(VolumeCharacteristic)
@@ -63,21 +63,21 @@ SonyAccessory.prototype.getServices = function() {
   return [this.service, this.getInformationService()];
      }
 
-SonyAccessory.prototype.getOn = function(callback) {
+SonyAccessory.prototype._getOn = function(callback) {
     var accessory = this;
     //get ping or something in here!!
 }
 
-SonyAccessory.prototype.setOn = function(on, callback) {
+SonyAccessory.prototype._setOn = function(on, callback) {
 		  if(on){
 		    wol.wake(this.mac, function(error) {
 		      if (error) {
-		        this._service.setCharacteristic(Characteristic.On, false);
+		        this.service.setCharacteristic(Characteristic.On, false);
 		        this.log("Error when sending packets to turn on the tv", error);
 		      } else {
 		        this.log("TV turned on by sending the magic packets");
 		        setTimeout(function() {
-		          this._service.setCharacteristic(Characteristic.On, false);
+		          this.service.setCharacteristic(Characteristic.On, false);
 		        }.bind(this), 30000);
 		      }
 		    }.bind(this));
