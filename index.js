@@ -80,13 +80,8 @@ SonyAccessory.prototype._setOn = function(on, callback) {
 		          this.service.setCharacteristic(Characteristic.On, false);
 		        }.bind(this), 30000);
 		      }
-		    }
-            .bind(this));
+		    }.bind(this));
 		  }
-          else{
-
-
-          }
 		  callback();
 }
 
@@ -97,16 +92,7 @@ SonyAccessory.prototype._getVolume = function(callback) {
 
 SonyAccessory.prototype._setVolume = function(volume, callback) {
     var accessory = this;
-    var exec = require('child_process').exec;
-    var command = '../send_command.sh' + " " + '10.0.1.9' + " " 'AAAAAQAAAAEAAAAlAw=='
-    process.exec(command , function (err,stdout,stderr) {
-    if (err) {
-        console.log("\n"+stderr);
-    } else {
-        console.log(stdout);
-    }
-});
-    callback();
+    callback(null);
 }
 
 
