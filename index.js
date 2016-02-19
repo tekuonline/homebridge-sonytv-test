@@ -98,7 +98,7 @@ SonyAccessory.prototype._getVolume = function(callback) {
 SonyAccessory.prototype._setVolume = function(volume, callback) {
     var accessory = this;
     var exec = require('child_process').exec;
-    var command = '../send_command.sh' + " " + 10.0.1.9 + " " AAAAAQAAAAEAAAAlAw==
+    var command = '../send_command.sh' + " " + '10.0.1.9' + " " 'AAAAAQAAAAEAAAAlAw=='
     process.exec(command , function (err,stdout,stderr) {
     if (err) {
         console.log("\n"+stderr);
